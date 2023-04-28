@@ -2,20 +2,22 @@
 
 namespace Tests\Feature\Livewire\Todo;
 
-use App\Http\Livewire\Todo\Create;
+use App\Http\Livewire\Todo;
 use App\Models\User;
 
-use function Pest\Laravel\actingAs;
+use function Pest\Laravel\{actingAs, assertDatabaseCount};
+use function Pest\Livewire\livewire;
 
-// use function Pest\Livewire\livewire;
+it('should be able create a todo', function () {
+    $user = User::factory()->create();
+    actingAs($user);
 
-// uses(TestCase::class);
+    livewire(Todo\Create::class)
+        ->set('title', 'My first todo')
+        ->set('deadline', now()->addDay())
+        ->set('user_id', $user->id)
+        ->call('save')
+        ->assertHasNoErrors();
 
-// test('test', function () {
-//     $user = User::factory()->create();
-//     actingAs($user);
-
-//     livewire(Create::class)
-//        ->set('title', 'Test')
-//        ->call('createTodo')
-//        ->assertEmitted('todoCreated');
+    assertDatabaseCount('todos', 1);
+});
