@@ -16,10 +16,13 @@ class TodoFactory extends Factory
      */
     public function definition(): array
     {
+        $status = ['pending' , 'completed', 'in progress'];
+
         return [
             'user_id'  => 1,
             'title'    => $this->faker->sentence,
             'deadline' => $this->faker->dateTimeBetween('now', '+1 year'),
+            'status'   => $status[rand(0, 2)],
         ];
     }
 }
