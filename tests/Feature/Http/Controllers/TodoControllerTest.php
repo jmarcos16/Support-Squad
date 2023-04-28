@@ -1,19 +1,14 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+use App\Models\User;
 
-use Illuminate\Foundation\Testing\{RefreshDatabase, WithFaker};
-use Tests\TestCase;
+use function Pest\Laravel\{actingAs, get};
 
-class TodoControllerTest extends TestCase
-{
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
+test('todo page loads', function () {
+    $user = User::factory()->create();
+    actingAs($user);
 
-        $response->assertStatus(200);
-    }
-}
+    get('/todo')
+        ->assertStatus(200)
+        ->assertViewIs('todo');
+});
