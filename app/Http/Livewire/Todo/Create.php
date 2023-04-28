@@ -9,11 +9,20 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public string $title;
+    public string|int $title;
 
     public string $deadline;
 
-    public int $user_id;
+    public string|int $user_id;
+
+    /**
+     * @var array<string, array<int, string>>
+     */
+    protected array $rules = [
+        'title'    => ['required', 'string', 'min:3', 'max:255'],
+        'deadline' => ['required', 'date'],
+        'user_id'  => ['required', 'integer', 'exists:users,id'],
+    ];
 
     public function render(): Factory|View|Application
     {
@@ -22,6 +31,8 @@ class Create extends Component
 
     public function save(): void
     {
+        $this->validate();
+
         Todo::query()->create([
             'title'    => $this->title,
             'deadline' => $this->deadline,

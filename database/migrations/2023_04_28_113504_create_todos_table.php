@@ -15,6 +15,7 @@ return new class () extends Migration {
             $table->id();
             $table->string('title');
             $table->timestamp('deadline');
+            $table->string('status')->default('pending');
             $table->foreignIdFor(User::class, 'user_id');
             $table->timestamps();
         });
