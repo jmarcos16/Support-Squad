@@ -59,7 +59,15 @@
                     </x-table.cell>
                     <x-table.cell>{{ $todo->deadline }}</x-table.cell>
                     <x-table.cell>{{ $todo->created_at }}</x-table.cell>
-                    <x-table.cell>{{ $todo->created_at }}</x-table.cell>
+                    <x-table.cell>
+                        <x-primary-button wire:click="edit({{ $todo->id }})">
+                            Edit
+                        </x-primary-button>
+
+                        <x-danger-button wire:click="delete({{ $todo->id }})">
+                            Delete
+                        </x-danger-button>
+                    </x-table.cell>
                 </x-table.row>
             @endforeach
         </x-slot>
