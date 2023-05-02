@@ -15,6 +15,8 @@ class Create extends Component
 
     public string|int $user_id;
 
+    public bool $isModalOpen = false;
+
     /**
      * @var array<string, array<int, string>>
      */
@@ -23,6 +25,11 @@ class Create extends Component
         'deadline' => ['required', 'date'],
         'user_id'  => ['required', 'integer', 'exists:users,id'],
     ];
+
+    /**
+     * @var array<string, string>
+     */
+    protected $listeners = ['openCreateModal' => 'openModal', 'closeCreateModal' => 'closeModal'];
 
     public function render(): Factory|View|Application
     {
@@ -38,5 +45,15 @@ class Create extends Component
             'deadline' => $this->deadline,
             'user_id'  => auth()->user()->id,
         ]);
+    }
+
+    public function openModal(): void
+    {
+        $this->isModalOpen = true;
+    }
+
+    public function closeModal(): void
+    {
+        $this->isModalOpen = false;
     }
 }

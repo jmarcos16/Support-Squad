@@ -14,9 +14,12 @@
                     <div>
                         <i class='bx bx-plus absolute mt-2 text-white ml-2 cursor-pointer'></i>
                         <x-primary-button
-                            class="bg-blue-600 text-white pl-7 pr-3 py-1 rounded-lg text-right font-sans hover:bg-blue-500 focus:bg-blue-800">
+                            class="bg-blue-600 text-white pl-7 pr-3 py-1 rounded-lg text-right font-sans hover:bg-blue-500 focus:bg-blue-800"
+                            onclick="Livewire.emit('openCreateModal')">
                             Create Todo
                         </x-primary-button>
+
+                        <livewire:todo.create />
                     </div>
                 </div>
 
@@ -26,4 +29,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>
