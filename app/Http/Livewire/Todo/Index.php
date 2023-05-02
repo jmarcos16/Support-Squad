@@ -12,7 +12,7 @@ class Index extends Component
 
     public string $search = '';
 
-    public string $status = '';
+    // public string $status = '';
 
     public function updatingSearch(): void
     {
@@ -23,7 +23,7 @@ class Index extends Component
     {
         return view('livewire.todo.index', [
             'todos' => auth()->user()->todos() /** @phpstan-ignore-line */
-                ->where('status', 'like', '%' . $this->status . '%')
+                ->where('status', 'like', '%' . $this->search . '%')
                 ->orWhere('title', 'like', '%' . $this->search . '%')
                 ->orWhere('deadline', 'like', '%' . $this->search . '%')
                 ->orWhere('created_at', 'like', '%' . $this->search . '%')
