@@ -36,7 +36,7 @@ class Create extends Component
         Todo::query()->create([
             'title'    => $this->title,
             'deadline' => $this->deadline,
-            'user_id'  => $this->user_id,
+            'user_id'  => auth()->user()->id,
         ]);
     }
 }
