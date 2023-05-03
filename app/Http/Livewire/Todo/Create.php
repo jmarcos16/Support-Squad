@@ -40,13 +40,13 @@ class Create extends Component
     {
         $this->validate();
 
-        // Todo::query()->create([
-        //     'title'    => $this->title,
-        //     'deadline' => $this->deadline,
-        //     'user_id'  => auth()->user()->id,
-        // ]);
+        Todo::query()->create([
+            'title'    => $this->title,
+            'deadline' => $this->deadline,
+            'user_id'  => auth()->user()->id,
+        ]);
 
-        dd('chegou aqui');
+        // dd('chegou aqui');
     }
 
     public function openModal(): void
