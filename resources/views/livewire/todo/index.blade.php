@@ -45,6 +45,7 @@
             <x-table.heading name="Deadline" />
             <x-table.heading name="Created At" />
             <x-table.heading name="Action" />
+            <x-table.heading name="ids" />
         </x-slot>
 
         <x-slot name="body">
@@ -68,6 +69,8 @@
                             Delete
                         </x-danger-button>
                     </x-table.cell>
+
+                    <x-table.cell>{{ $todo->user_id }} - {{ auth()->user()->id }}</x-table.cell>
                 </x-table.row>
             @endforeach
         </x-slot>

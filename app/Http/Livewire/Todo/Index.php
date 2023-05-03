@@ -12,7 +12,8 @@ class Index extends Component
 
     public string $search = '';
 
-    // public string $status = '';
+    /** @var array<string> */
+    protected $listeners = ['todo::created' => '$refresh'];
 
     public function updatingSearch(): void
     {

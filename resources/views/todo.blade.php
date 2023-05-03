@@ -26,6 +26,8 @@
                 <div class="px-6 text-gray-900 dark:text-gray-100">
                     <livewire:todo.index />
                 </div>
+
+
             </div>
         </div>
     </div>

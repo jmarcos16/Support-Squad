@@ -4,7 +4,7 @@ use App\Http\Controllers\{ProfileController, TodoController};
 use Illuminate\Support\Facades\Route;
 
 if (app()->isLocal()) {
-    auth()->loginUsingId(1);
+    auth()->loginUsingId(2);
 }
 
 Route::get('/', function () {

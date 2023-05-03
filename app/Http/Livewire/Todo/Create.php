@@ -15,7 +15,7 @@ class Create extends Component
 
     public string|int $user_id;
 
-    public bool $isModalOpen = true;
+    public bool $isModalOpen = false;
 
     /**
      * @var array<string, array<int, string>>
@@ -23,7 +23,6 @@ class Create extends Component
     protected array $rules = [
         'title'    => ['required', 'string', 'min:3', 'max:255'],
         'deadline' => ['required', 'date'],
-        'user_id'  => ['required', 'integer', 'exists:users,id'],
     ];
 
     /**
@@ -46,7 +45,8 @@ class Create extends Component
             'user_id'  => auth()->user()->id,
         ]);
 
-        // dd('chegou aqui');
+        $this->emit('todo::created');
+        $this->closeModal();
     }
 
     public function openModal(): void
