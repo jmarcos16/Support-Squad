@@ -15,7 +15,7 @@ class Create extends Component
 
     public string|int $user_id;
 
-    public bool $isModalOpen = false;
+    public bool $isModalOpen = true;
 
     /**
      * @var array<string, array<int, string>>
