@@ -6,6 +6,7 @@ parameters:
 
     universalObjectCratesClasses:
         - Illuminate\Http\Request
+        - Illuminate\Contracts\Auth\Authenticatable
     # Level 9 is the highest level
     level: 6
 

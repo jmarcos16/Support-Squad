@@ -8,10 +8,28 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+
+                <div class="flex justify-between pt-6 px-6">
+                    <h5 class="text-2xl font-bold">My Todos</h5>
+                    <div>
+                        <i class='bx bx-plus absolute mt-2 text-white ml-2 cursor-pointer'></i>
+                        <x-primary-button
+                            class="bg-blue-600 text-white pl-7 pr-3 py-1 rounded-lg text-right font-sans hover:bg-blue-500 focus:bg-blue-800"
+                            onclick="Livewire.emit('openCreateModal')">
+                            Create Todo
+                        </x-primary-button>
+
+                        <livewire:todo.create />
+                    </div>
                 </div>
+
+                <div class="px-6 text-gray-900 dark:text-gray-100">
+                    <livewire:todo.index />
+                </div>
+
+
             </div>
         </div>
     </div>
+
 </x-app-layout>
