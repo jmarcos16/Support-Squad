@@ -24,4 +24,9 @@ it('should be able list just my todos', function () {
     $user2 = User::factory()->create();
 
     $this->actingAs($user2);
+
+    $this->get(route('todo.index'))
+        ->assertDontSee($todos[0]->title)
+        ->assertDontSee($todos[1]->title)
+        ->assertDontSee($todos[2]->title);
 });

@@ -24,11 +24,12 @@ class Index extends Component
     {
         return view('livewire.todo.index', [
             'todos' => auth()->user()->todos() /** @phpstan-ignore-line */
-                ->where('status', 'like', '%' . $this->search . '%')
-                ->orWhere('title', 'like', '%' . $this->search . '%')
-                ->orWhere('deadline', 'like', '%' . $this->search . '%')
-                ->orWhere('created_at', 'like', '%' . $this->search . '%')
-                ->latest()
+                ->where(function ($query) {
+                    $query->where('status', 'like', '%' . $this->search . '%')
+                          ->orWhere('title', 'like', '%' . $this->search . '%')
+                          ->orWhere('deadline', 'like', '%' . $this->search . '%')
+                          ->orWhere('created_at', 'like', '%' . $this->search . '%');
+                })->latest()
                 ->paginate(8),
         ]);
     }
