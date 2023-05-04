@@ -3,9 +3,9 @@
 use App\Http\Controllers\{ProfileController, TodoController};
 use Illuminate\Support\Facades\Route;
 
-if (app()->isLocal()) {
-    auth()->loginUsingId(1);
-}
+// if (app()->isLocal()) {
+//     auth()->loginUsingId(1);
+// }
 
 Route::get('/', function () {
     return view('welcome');
