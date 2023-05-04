@@ -23,13 +23,8 @@ class Index extends Component
     public function render(): Factory|View|Application
     {
         return view('livewire.todo.index', [
-            'todos' => auth()->user()->todos() /** @phpstan-ignore-line */
-                ->where(function ($query) {
-                    $query->where('status', 'like', '%' . $this->search . '%')
-                          ->orWhere('title', 'like', '%' . $this->search . '%')
-                          ->orWhere('deadline', 'like', '%' . $this->search . '%')
-                          ->orWhere('created_at', 'like', '%' . $this->search . '%');
-                })->latest()
+            'todos' => auth()->user()->filterAllTodos($this->search, ['title', 'status']) /** @phpstan-ignore-line */
+                ->latest()
                 ->paginate(8),
         ]);
     }

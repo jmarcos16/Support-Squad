@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,5 +52,22 @@ class User extends Authenticatable
     public function todos(): HasMany
     {
         return $this->hasMany(Todo::class);
+    }
+
+    /**
+     * Filter all todos by search and columns.
+     *
+     * @param string $search
+     * @param array<int, string> $columns
+     */
+
+    public function filterAllTodos(string $search, array $columns): HasMany
+    {
+        return $this->todos() /** @phpstan-ignore-line */
+            ->where(function ($query) use ($search, $columns) {
+                foreach ($columns as $column) {
+                    $query->orWhere($column, 'like', "%{$search}%");
+                }
+            });
     }
 }
