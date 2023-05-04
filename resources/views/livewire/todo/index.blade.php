@@ -44,8 +44,7 @@
             <x-table.heading name="Status" />
             <x-table.heading name="Deadline" />
             <x-table.heading name="Created At" />
-            <x-table.heading name="Action" />
-            <x-table.heading name="ids" />
+            <x-table.heading name="Action" class="text-center" />
         </x-slot>
 
         <x-slot name="body">
@@ -58,9 +57,9 @@
                             {{ $todo->status }}
                         </div>
                     </x-table.cell>
-                    <x-table.cell>{{ $todo->deadline }}</x-table.cell>
-                    <x-table.cell>{{ $todo->created_at }}</x-table.cell>
-                    <x-table.cell>
+                    <x-table.cell>{{ date('d-m-Y', strtotime($todo->deadline)) }}</x-table.cell>
+                    <x-table.cell>{{ date('d-m-Y', strtotime($todo->created_at)) }}</x-table.cell>
+                    <x-table.cell class="text-center">
                         <x-primary-button wire:click="edit({{ $todo->id }})">
                             Edit
                         </x-primary-button>
@@ -70,7 +69,6 @@
                         </x-danger-button>
                     </x-table.cell>
 
-                    <x-table.cell>{{ $todo->user_id }} - {{ auth()->user()->id }}</x-table.cell>
                 </x-table.row>
             @endforeach
         </x-slot>

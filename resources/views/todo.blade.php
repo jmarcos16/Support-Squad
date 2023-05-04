@@ -10,9 +10,12 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
                 <div class="flex justify-between pt-6 px-6">
-                    <h5 class="text-2xl font-bold">My Todos</h5>
+                    <div class="leading-none">
+                        <h5 class="text-2xl font-bold dark:text-white">My Todos</h5>
+                        <p class="text-gray-500 dark:text-gray-400">List of all my tasks exemple</p>
+                    </div>
                     <div>
-                        <i class='bx bx-plus absolute mt-2 text-white ml-2 cursor-pointer'></i>
+                        <i class='bx bx-plus absolute mt-2 text-white dark:text-gray-900 ml-2 cursor-pointer'></i>
                         <x-primary-button
                             class="bg-blue-600 text-white pl-7 pr-3 py-1 rounded-lg text-right font-sans hover:bg-blue-500 focus:bg-blue-800"
                             onclick="Livewire.emit('openCreateModal')">
